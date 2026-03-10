@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pro Media Downloader</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+text-align:center;
+}
+
+/* HEADER */
+
+header{
+background:#ff0000;
+padding:15px;
+font-size:22px;
+font-weight:bold;
+}
+
+/* CONTAINER */
+
+.container{
+padding:20px;
+}
+
+/* INPUT */
+
+input{
+width:90%;
+padding:12px;
+border:none;
+border-radius:6px;
+margin-top:10px;
+}
+
+/* BUTTON */
+
+button{
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#ff0000;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+/* PREVIEW */
+
+.preview video,
+.preview audio{
+width:90%;
+margin-top:20px;
+border-radius:10px;
+}
+
+/* DOWNLOAD */
+
+.download-box{
+margin-top:20px;
+display:none;
+}
+
+.download{
+display:block;
+margin:10px auto;
+width:80%;
+padding:12px;
+background:#1f1f1f;
+border-radius:6px;
+text-decoration:none;
+color:white;
+}
+
+/* INFO */
+
+.info{
+margin-top:15px;
+color:#ccc;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+⚡ Pro MP3 / MP4 Downloader
+</header>
+
+<div class="container">
+
+<h3>Paste Media Link</h3>
+
+<input id="url" placeholder="Paste .mp4 or .mp3 link">
+
+<br>
+
+<button onclick="generate()">Generate</button>
+
+<div class="preview" id="preview"></div>
+
+<div class="download-box" id="downloads">
+
+<h3>Download Options</h3>
+
+<a id="downloadVideo" class="download" download>⬇ Download MP4</a>
+
+<a id="downloadAudio" class="download" download>⬇ Download MP3</a>
+
+<div class="info" id="info"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function generate(){
+
+let url=document.getElementById("url").value
+
+if(url==""){
+alert("Paste a media link first")
+return
+}
+
+let preview=document.getElementById("preview")
+
+if(url.includes(".mp3")){
+
+preview.innerHTML=`<audio controls src="${url}"></audio>`
+
+}else{
+
+preview.innerHTML=`<video controls src="${url}"></video>`
+
+}
+
+document.getElementById("downloadVideo").href=url
+document.getElementById("downloadAudio").href=url
+
+document.getElementById("downloads").style.display="block"
+
+document.getElementById("info").innerText="Ready to download"
+
+}
+
+</script>
+
+</body>
+  </html>
